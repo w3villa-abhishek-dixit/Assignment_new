@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-center">
+  <div class="col-md-8">
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+
+        <h1 class="card-title text-center mb-3"><%= @post.title %></h1>
+        <p class="card-text lead text-muted"><%= @post.body %></p>
+
+        <div class="d-flex justify-content-end gap-2 mt-4">
+          <%= link_to "Edit", edit_post_path(@post), class: "btn btn-warning" %>
+          <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+          <%= link_to "Back to All Posts", posts_path, class: "btn btn-secondary" %>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

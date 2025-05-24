@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <%= form_with model: post, local: true do |form| %>
+          
+          <% if post.errors.any? %>
+            <div class="alert alert-danger">
+              <h5><%= pluralize(post.errors.count, "error") %> prevented this post from being saved:</h5>
+              <ul>
+                <% post.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="mb-3">
+            <%= form.label :title, class: "form-label" %>
+            <%= form.text_field :title, class: "form-control", placeholder: "Enter post title" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :body, class: "form-label" %>
+            <%= form.text_area :body, rows: 5, class: "form-control", placeholder: "Write your content here..." %>
+          </div>
+
+          <div class="d-grid">
+            <%= form.submit "Save Post", class: "btn btn-success" %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

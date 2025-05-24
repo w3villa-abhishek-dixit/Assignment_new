@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center">
+  <div class="col-md-8">
+    <div class="text-center mb-4">
+      <h1 class="mb-3">All Posts</h1>
+      <%= link_to "Create New Post", new_post_path, class: "btn btn-primary" %>
+    </div>
+
+    <% if @posts.any? %>
+      <div class="list-group">
+        <% @posts.each do |post| %>
+          <div class="list-group-item mb-3 shadow-sm rounded">
+            <h5>
+              <%= link_to post.title, post_path(post), class: "text-decoration-none fw-bold" %>
+            </h5>
+            <p class="text-muted"><%= truncate(post.body, length: 100) %></p>
+            <div class="d-flex justify-content-end">
+              <%= link_to "Edit", edit_post_path(post), class: "btn btn-warning btn-sm me-2" %>
+              <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="alert alert-info text-center">
+        No posts found. Start by creating one!
+      </div>
+    <% end %>
+  </div>
+</div>
